@@ -49,12 +49,13 @@ def createPairs(gens):
     pairList = []
     for x in gens:
         currentTuples = []
+        xcopy = x.copy()
         for y in x:
             if x[y]==y:
-                del x[y]
+                del xcopy[y]
             else:
                 currentTuples.append((y,x[y]))
-        pairList.append([frozenset(currentTuples),x])
+        pairList.append([frozenset(currentTuples),xcopy])
     return pairList
 
 
