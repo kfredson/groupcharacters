@@ -39,9 +39,7 @@ def generateGroup(gens):
         else:
             gpElements.append(p)
             currentElementSet.add(p[0])
-            for z in gpElements:
-                compStack.append((z,p))
-            for z in gpElements:
+            for z in gens:
                 compStack.append((p,z))
     return gpElements
         
@@ -61,6 +59,16 @@ def createPairs(gens):
 
 x = createPairs([{1:2,2:1},{1:2,2:3,3:1}])
 y = generateGroup(x)
+assert(len(y)==6)
 
+nums = range(8)
+swapList = []
+for x in nums:
+    for y in nums:
+        if x < y:
+            swapList.append({x:y,y:x})
+x = createPairs(swapList)
+y = generateGroup(x)
+assert(len(y)==8*7*6*5*4*3*2*1)
             
         
